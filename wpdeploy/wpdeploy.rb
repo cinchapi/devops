@@ -99,3 +99,6 @@ File.open(apache_conf, 'a') do |f|
   f.puts "  ServerAlias #{url}.#{domain}"
   f.puts "</VirtualHost>"
 end
+
+# Restart Apache
+system 'sudo service httpd restart'
