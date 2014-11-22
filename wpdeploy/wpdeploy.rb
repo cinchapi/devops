@@ -88,7 +88,7 @@ url = name.tr('_', '-')
 linode = Linode.new(:api_key => linode_api_key)
 domain_id = "-1"
 linode.domain.list.each { |x| domain_id = x.domainid if x.domain == domain }
-linode.domain.resource.create(:DomainID => domain_id, :Type => "A", :Name => url, :Target => ip_address) unless domain_id == "-1"
+linode.domain.resource.create(:DomainID => domain_id, :Type => "A", :Name => url, :Target => ip_address, :TTL_sec => 300) unless domain_id == "-1"
 
 # Add virtual host to apache conf
 apache_conf = File.expand_path(apache_conf)
