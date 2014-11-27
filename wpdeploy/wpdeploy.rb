@@ -100,5 +100,8 @@ File.open(apache_conf, 'a') do |f|
   f.puts "</VirtualHost>"
 end
 
+# Make the destination directory ownable by apache
+system "chown -R apache:apache #{destination}"
+
 # Restart Apache
 system 'sudo service httpd restart'
